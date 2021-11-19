@@ -1,0 +1,3 @@
+RPi.GPIO
+pi-rc522
+spidev

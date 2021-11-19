@@ -1,0 +1,1 @@
+cvlc $ARIBOX_ROOT/songs/abc_katze_laeuft_im_schnee.mp3 --play-and-exit
