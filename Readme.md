@@ -27,6 +27,3 @@ sudo apt-get install vlc
 
 # Install Music Player Demon
 [MPD Docs](https://mpd.readthedocs.io/en/latest/user.html)
-
-
-
