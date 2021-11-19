@@ -11,7 +11,7 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__),
 sys.path.pop(0)
 
 setup(
-    name='aribot',
+    name='aribox',
     packages=find_packages(),
     include_package_data=True,
     version="0.0.1",

@@ -1,7 +1,0 @@
-README.md
-setup.py
-aribot.egg-info/PKG-INFO
-aribot.egg-info/SOURCES.txt
-aribot.egg-info/dependency_links.txt
-aribot.egg-info/requires.txt
-aribot.egg-info/top_level.txt

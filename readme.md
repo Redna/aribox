@@ -26,5 +26,5 @@ pip3 install -e .
 sudo apt-get install vlc
 ```
 
-##s Install Music Player Demon
+## Install Music Player Demon
 [MPD Docs](https://mpd.readthedocs.io/en/latest/user.html)
