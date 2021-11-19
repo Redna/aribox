@@ -32,5 +32,5 @@ setup(
     author_email='gruhl.alexander@gmail.com',
     url='https://github.com/redna/aribox',
     license='MIT',
-    install_requires=['spidev', 'RPi.GPIO', "pi-rc522"],
+    install_requires=['spidev', 'RPi.GPIO', 'pi-rc522'],
 )

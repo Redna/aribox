@@ -15,9 +15,8 @@ from reader import Aribox
 
 STOPCODE=[233, 241, 62, 141, 171]
 
-
 # Capture SIGINT for cleanup when the script is aborted
-def end_read(signal,frame):
+def end_read(signal, frame):
     global run
     print("\nCtrl+C captured, ending read.")
     run = False
