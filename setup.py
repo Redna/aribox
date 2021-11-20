@@ -11,7 +11,7 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__),
 sys.path.pop(0)
 
 setup(
-    name='aribot',
+    name='aribox',
     packages=find_packages(),
     include_package_data=True,
     version="0.0.1",
@@ -32,5 +32,5 @@ setup(
     author_email='gruhl.alexander@gmail.com',
     url='https://github.com/redna/aribox',
     license='MIT',
-    install_requires=['spidev', 'RPi.GPIO', "pi-rc522"],
+    install_requires=['spidev', 'RPi.GPIO', 'pi-rc522'],
 )

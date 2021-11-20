@@ -1,13 +1,14 @@
+# Aribox
 
 - install python3 on the machine
 
-# Install python
+## Install python
 ```python
 sudo apt-get update
 sudo apt-get install python3 python3-venv python3-pip
 ```
 
-# Install project
+## Install project
 
 install requirements
 
@@ -20,10 +21,10 @@ to install the project
 pip3 install -e .
 ```
 
-# Install music software
+## Install music software
 ```shell
 sudo apt-get install vlc
 ```
 
-# Install Music Player Demon
+## Install Music Player Demon
 [MPD Docs](https://mpd.readthedocs.io/en/latest/user.html)
