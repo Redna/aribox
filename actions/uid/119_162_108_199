@@ -1,0 +1,6 @@
+#!/bin/bash
+#
+# System action
+#
+echo "Good Night - Shutting down."
+sudo systemctl poweroff

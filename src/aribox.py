@@ -31,9 +31,7 @@ class Aribox:
             return
 
         print(f"Launching {action}")
-        self.proc = subprocess.Popen(['/bin/sh', '-c', action],
-                                     stdout=subprocess.PIPE,
-                                     stderr=subprocess.STDOUT)
+        self.proc = subprocess.Popen(['/bin/sh', '-c', action])
 
     def stop_subprocesses(self) -> None:
         if not hasattr(self.proc, 'pid'):

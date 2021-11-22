@@ -20,15 +20,15 @@ def main():
     while rfid.running:
         try:
             uid = rfid.listen(debug=DEBUG)
-            subprocess.Popen(['aplay', './beep.wav'],
-                             stdout=subprocess.PIPE,
-                             stderr=subprocess.STDOUT)
+            subprocess.Popen(['aplay', './beep.wav'])
             aribox.stop_subprocesses()
             aribox.launch_action(uid)
         except RuntimeWarning as e:
             print("Problem reading RFID Tag", e)
 
         time.sleep(1)
+        if(DEBUG):
+            time.sleep(22)
 
 
 if __name__ == "__main__":
