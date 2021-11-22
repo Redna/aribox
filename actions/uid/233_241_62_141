@@ -1,0 +1,26 @@
+#!/bin/bash
+# 233, 241, 62, 141
+# System toggle action | Wireless
+#   https://karlcode.owtelse.com/blog/2017/01/09/disabling-usb-ports-on-linux/
+FILE_PATH=./actions/tmp/$(basename $BASH_SOURCE)
+
+
+if [[ -f "$FILE_PATH" ]]; then
+    USB_PORT=$(cat $FILE_PATH)
+    echo "$FILE_PATH exists | Turning on device on $USB_PORT"
+    echo $USB_PORT | sudo tee /sys/bus/usb/drivers/usb/bind
+    rm $FILE_PATH
+else 
+    for device in $(ls /sys/bus/usb/devices/*/product); do 
+        DEVICE_NAME=$(cat $device)
+        if [[ $DEVICE_NAME =~ "WLAN" ]]; then
+            USB_PORT=$(echo $device | grep -oP '(\d+-\d+.\d+)')
+            break
+        fi
+    done
+    
+    echo $USB_PORT > $FILE_PATH
+    echo "Shutting down $DEVICE_NAME on $USB_PORT"
+    echo $FILE_PATH
+    echo $USB_PORT | sudo tee /sys/bus/usb/drivers/usb/unbind
+fi
