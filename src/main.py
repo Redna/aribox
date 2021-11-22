@@ -82,12 +82,7 @@ def main():
     while rfid.running:
         try:
             uid = rfid.listen(debug=DEBUG)
-            action_id = f"{str(uid[0])}_{str(uid[1])}_{str(uid[2])}_{str(uid[3])}"
-            
-            if aribox.is_action_running(action_id):
-                continue
-            
-            subprocess.Popen(['/bin/sh', '-c', "aplay ./beep.wav"])
+            subprocess.Popen(['aplay', './beep.wav'])
             aribox.stop_subprocesses()
             aribox.launch_action(action_id)
         except RuntimeWarning as e:
