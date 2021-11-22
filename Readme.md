@@ -49,3 +49,4 @@ Enabled commands:
 - `sudo systemctl poweroff`
 - `sudo systemctl reboot`
 - `sudo systemctl halt`
+:
