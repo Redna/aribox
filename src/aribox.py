@@ -8,15 +8,14 @@ from psutil import NoSuchProcess
 from pirc522 import RFID
 
 
-CARD_REMOVED_THRESHOLD = 1  # seconds
-    
+CARD_REMOVED_THRESHOLD = 2  # seconds
+
 
 class Aribox:
-    
-    
+
     process = None
-    action_id = ""    
-        
+    action_id = ""
+
     def __init__(self):
         # Welcome message
         print("    _____")
@@ -49,7 +48,7 @@ class Aribox:
             return
 
         print(f"Stopping all subprocesses associated with {self.process.pid}")
-        
+
         try:
             for subprocess in self.process.children(recursive=True):
                 subprocess.kill()
@@ -62,21 +61,27 @@ class Aribox:
         if not hasattr(self.process, 'pid'):
             return
 
-        if is_subprocess_sleeping(self.process):            
-            print(f"Resuming all subprocesses associated with {self.process.pid}")
+        if is_subprocess_sleeping(self.process):
+            print(
+                f"Resuming all subprocesses associated with {self.process.pid}")
             deep_resume(self.process)
-        else:            
-            print(f"Suspending all subprocesses associated with {self.process.pid}")
+        else:
+            print(
+                f"Suspending all subprocesses associated with {self.process.pid}")
             deep_suspend(self.process)
 
-    def is_action_running(self, id) -> bool:        
-        action_running = (self.action_id == id
-                          and self.process is not None 
-                          and self.process.status() != 'zombie'
-                          and time() - self.start_time < CARD_REMOVED_THRESHOLD)
+    def is_action_running(self, id) -> bool:
+        end_time = time()
         
+        action_running = (self.action_id == id
+                          and self.process is not None
+                          and self.process.status() != 'zombie')
+
+        action_running = (action_running
+                          or (self.action_id == id and end_time - self.start_time < CARD_REMOVED_THRESHOLD))
+
         self.start_time = time()
-        return action_running  
+        return action_running
 
 
 class RFIDWrapper:
@@ -98,7 +103,6 @@ class RFIDWrapper:
             raise RuntimeWarning(
                 "Not able to read RFID tag. Maybe tag was removed too fast")
 
-        print("\nDetected Card: " + format(data, "02x"))
         (error, uid) = self.rdr.anticoll()
 
         if error:
@@ -113,7 +117,6 @@ class RFIDWrapper:
         self.aribox.stop_subprocesses()
         self.rdr.cleanup()
         sys.exit()
-
 
 
 def deep_suspend(process):
