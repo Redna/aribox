@@ -1,0 +1,5 @@
+#!/bin/bash
+#
+# Song action | vogelhochzeit.wav
+#
+aplay ./songs/vogelhochzeit.wav

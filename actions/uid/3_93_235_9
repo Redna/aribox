@@ -1,0 +1,5 @@
+#!/bin/bash
+#
+# Song action | der_hase_und_der_igel.wav
+#
+aplay ./songs/der_hase_und_der_igel.wav

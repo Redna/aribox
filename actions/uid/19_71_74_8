@@ -1,0 +1,5 @@
+#!/bin/bash
+#
+# Song action | dschungelbuch_gemuetlichkeit.wav
+#
+aplay ./songs/dschungelbuch_gemuetlichkeit.wav

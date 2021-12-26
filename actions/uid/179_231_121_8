@@ -1,0 +1,5 @@
+#!/bin/bash
+#
+# Song action | wo_ist_es_denn.wav
+#
+aplay ./songs/wo_ist_es_denn.wav

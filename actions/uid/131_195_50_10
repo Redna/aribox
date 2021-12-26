@@ -1,0 +1,5 @@
+#!/bin/bash
+#
+# Song action | abc_katze_laeuft_im_schnee.wav
+#
+aplay ./songs/abc_katze_laeuft_im_schnee.wav
