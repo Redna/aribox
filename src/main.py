@@ -15,12 +15,10 @@ from aribox import Aribox, RFIDWrapper
 STOPCODE = [233, 241, 62, 141, 171]
 DEBUG = False
 PLAY_SOUNDS = True
-
-DISABLE_WIFI = False
 DISABLE_WIFI_ACTION = './actions/uid/20_175_34_51'
 
 MAXIMUM_ALSA_VOLUME = 60
-MINIMUM_ALSA_VOLUME = 10
+MINIMUM_ALSA_VOLUME = 5
 
 mixer = alsaaudio.Mixer()
 aribox = Aribox()
@@ -63,8 +61,7 @@ def main():
     if PLAY_SOUNDS:
         subprocess.Popen(['aplay', './songs/start.wav'])
     
-    if DISABLE_WIFI:
-        disable_wifi()
+    disable_wifi()
     
     rfid = RFIDWrapper(aribox)
 
@@ -82,7 +79,13 @@ def main():
     while rfid.running:
         try:
             uid = rfid.listen(debug=DEBUG)
-            subprocess.Popen(['aplay', './beep.wav'])
+            action_id = f"{str(uid[0])}_{str(uid[1])}_{str(uid[2])}_{str(uid[3])}"
+            
+            if aribox.is_action_running(action_id):
+                print(f"Action with UID[{action_id}] is already running.. nothing to do.")
+                continue
+            
+            subprocess.Popen(['/bin/sh', '-c', "aplay ./beep.wav"])
             aribox.stop_subprocesses()
             aribox.launch_action(action_id)
         except RuntimeWarning as e:

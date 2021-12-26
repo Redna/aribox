@@ -17,12 +17,6 @@ sudo apt-get install python-alsaaudio
 sudo apt-get install vlc
 ```
 
-### VLC
-
-```shell
-sudo apt-get install vlc
-```
-
 ## Install project
 
 ```shell
@@ -49,4 +43,3 @@ Enabled commands:
 - `sudo systemctl poweroff`
 - `sudo systemctl reboot`
 - `sudo systemctl halt`
-:

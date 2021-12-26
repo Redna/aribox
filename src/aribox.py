@@ -8,14 +8,15 @@ from psutil import NoSuchProcess
 from pirc522 import RFID
 
 
-CARD_REMOVED_THRESHOLD = 2  # seconds
-
+CARD_REMOVED_THRESHOLD = 1  # seconds
+    
 
 class Aribox:
-
+    
+    
     process = None
-    action_id = ""
-
+    action_id = ""    
+        
     def __init__(self):
         # Welcome message
         print("    _____")
@@ -38,14 +39,17 @@ class Aribox:
             return
 
         print(f"Launching {action}")
-        self.proc = subprocess.Popen(['/bin/sh', '-c', action])
+        proc = subprocess.Popen(['/bin/sh', '-c', action])
+        self.process = psutil.Process(proc.pid)
+        self.action_id = id
+        self.start_time = time()
 
     def stop_subprocesses(self) -> None:
         if not hasattr(self.process, 'pid'):
             return
 
         print(f"Stopping all subprocesses associated with {self.process.pid}")
-
+        
         try:
             for subprocess in self.process.children(recursive=True):
                 subprocess.kill()
@@ -58,27 +62,21 @@ class Aribox:
         if not hasattr(self.process, 'pid'):
             return
 
-        if is_subprocess_sleeping(self.process):
-            print(
-                f"Resuming all subprocesses associated with {self.process.pid}")
+        if is_subprocess_sleeping(self.process):            
+            print(f"Resuming all subprocesses associated with {self.process.pid}")
             deep_resume(self.process)
-        else:
-            print(
-                f"Suspending all subprocesses associated with {self.process.pid}")
+        else:            
+            print(f"Suspending all subprocesses associated with {self.process.pid}")
             deep_suspend(self.process)
 
-    def is_action_running(self, id) -> bool:
-        end_time = time()
-        
+    def is_action_running(self, id) -> bool:        
         action_running = (self.action_id == id
-                          and self.process is not None
-                          and self.process.status() != 'zombie')
-
-        action_running = (action_running
-                          or (self.action_id == id and end_time - self.start_time < CARD_REMOVED_THRESHOLD))
-
+                          and self.process is not None 
+                          and self.process.status() != 'zombie'
+                          and time() - self.start_time < CARD_REMOVED_THRESHOLD)
+        
         self.start_time = time()
-        return action_running
+        return action_running  
 
 
 class RFIDWrapper:
