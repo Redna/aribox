@@ -1,0 +1,16 @@
+[Unit]
+Description=Aribox systemd service.
+After=autologin@.service
+
+
+[Service]
+Type=simple
+User=pi
+Group=audio
+WorkingDirectory=/home/pi/aribox
+ExecStartPre=/usr/bin/sleep 15
+ExecStart=python3 -u src/main.py
+Environment=XDG_RUNTIME_DIR=/run/user/1000
+
+[Install]
+WantedBy=default.target

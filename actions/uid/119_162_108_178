@@ -1,1 +1,5 @@
-cvlc ./songs/abc_katze_laeuft_im_schnee.mp3 --play-and-exit
+#!/bin/bash
+#
+# Song action | abc_katze_laeuft_im_schnee.mp3
+#
+cvlc ./songs/abc_katze_laeuft_im_schnee.mp3 --play-and-exit  > /dev/null

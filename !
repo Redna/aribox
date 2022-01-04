@@ -1,0 +1,12 @@
+[Unit]
+Description=Aribox systemd service.
+
+[Service]
+Type=fork
+User=pi
+Group=audio
+WorkingDirectory=/home/pi/aribox
+ExecStart=python3 -u src/main.py > aribox.log
+
+[Install]
+WantedBy=multi-user.target

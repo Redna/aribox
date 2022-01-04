@@ -1,3 +1,4 @@
 spidev
 RPi.GPIO
 pi-rc522
+gpiozero
