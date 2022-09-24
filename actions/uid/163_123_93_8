@@ -1,0 +1,5 @@
+#!/bin/bash
+#
+# Song action | affe_in_afrika.wav
+#
+aplay ./songs/affe_in_afrika.wav

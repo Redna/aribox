@@ -1,0 +1,5 @@
+#!/bin/bash
+#
+# Song action | hopp_hopp_hopp_pferdchen.wav
+#
+aplay ./songs/hopp_hopp_hopp_pferdchen.wav

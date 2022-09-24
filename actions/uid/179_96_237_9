@@ -1,0 +1,5 @@
+#!/bin/bash
+#
+# Song action | die_kleine_spinne.wav
+#
+aplay ./songs/die_kleine_spinne.wav
