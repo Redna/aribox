@@ -1,5 +1,5 @@
 # Aribox
-Very simplistic setup for a music box which runs different kind of shell scripts based on codes from NFC cards.
+Very simple setup for a music box which runs different kind of shell scripts based on codes from NFC cards. I build this box for my 1 year-old daughter and she loved it :) 
 
 ![Aribox final](img/aribox.jpeg)
 
@@ -50,6 +50,9 @@ Enabled commands:
 ## Required sounds
 Before running the box you need to create a `songs` folder and add a **start.wav** and **stop.wav**. 
 
+## Enable the service
+To enable the service definition `aribox.service` run `sudo systemctl enable aribox.service` which will register the service to be run on system boot.
+
 # How things are wired up
 Here are some inspirational images how inside the Aribox things are wired up. Maybe it helps.
 
@@ -59,5 +62,5 @@ Here are some inspirational images how inside the Aribox things are wired up. Ma
 
 # Some things to mention
 
-- I was not able to figure out the optimal startup time for the box. It seems the external soundcard needs some boot time. If the aribox.service starts to early after system startup, the driver is not initialized properly (15s seems to be working - however, my doughter does not really like to wait :D)
-- Sometimes the RFC reader does not get signals properly when a card is not removed from the top of the reader. I added a 2s threshold for the time a card needs to be removed for the reader before replaying. However, somtimes the song gets replayed without removing the card form the reaqder.
+- I was not able to figure out the optimal startup time for the box. It seems the external sound card needs some boot time. If the aribox.service starts to early after system startup, the driver is not initialized properly (15s seems to be working - however, my daughter does not really like to wait :D)
+- Sometimes the RFC reader does not get signals properly when a card is not removed from the top of the reader. I added a 2s threshold for the time a card needs to be removed for the reader before replaying. However, sometimes the song gets replayed without removing the card form the reader.

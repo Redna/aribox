@@ -62,10 +62,7 @@ def main():
         
     if PLAY_SOUNDS:
         subprocess.Popen(['aplay', './songs/start.wav'])
-    
-    if DISABLE_WIFI:
-        disable_wifi()
-    
+        
     rfid = RFIDWrapper(aribox)
 
     signal.signal(signal.SIGINT, rfid.interrupt_handler)
@@ -73,11 +70,15 @@ def main():
     blue_button = Button(21)
     red_button = Button(13, hold_time=3)
     yellow_button = Button(5)
+    
     blue_button.when_pressed = blue_button_handler
     red_button.when_pressed = red_button_handler
-    red_button.when_held = red_button_held_handler 
-    
+    red_button.when_held = red_button_held_handler
+        
     yellow_button.when_pressed = yellow_button_handler
+    
+    if DISABLE_WIFI and not blue_button.is_pressed:
+        disable_wifi()
     
     while rfid.running:
         try:
