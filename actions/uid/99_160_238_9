@@ -1,0 +1,5 @@
+#!/bin/bash
+#
+# Song action | ich_bin_ein_dicker_tanzbaer.wav
+#
+aplay ./songs/ich_bin_ein_dicker_tanzbaer.wav

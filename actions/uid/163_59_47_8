@@ -1,0 +1,5 @@
+#!/bin/bash
+#
+# Song action | tiger_fauchi.wav
+#
+aplay ./songs/tiger_fauchi.wav

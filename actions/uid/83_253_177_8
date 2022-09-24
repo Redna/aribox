@@ -1,0 +1,5 @@
+#!/bin/bash
+#
+# Song action | ferien_auf_dem_bauernhof.wav
+#
+aplay ./songs/ferien_auf_dem_bauernhof.wav

@@ -1,0 +1,5 @@
+#!/bin/bash
+#
+# Song action | biene_maja.wav
+#
+aplay ./songs/biene_maja.wav
