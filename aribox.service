@@ -8,7 +8,7 @@ Type=simple
 User=pi
 Group=audio
 WorkingDirectory=/home/pi/aribox
-ExecStartPre=/usr/bin/sleep 15
+ExecStartPre=/usr/bin/sleep 1
 ExecStart=python3 -u src/main.py
 Environment=XDG_RUNTIME_DIR=/run/user/1000
 
